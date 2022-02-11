@@ -38,23 +38,19 @@ function getKoalas() {
       url: `/koalas`
     }).then(function (response) {
       console.log("GET /koalas response", response);
-      // // append data to the DOM
-      // for (let i = 0; i < response.length; i++) {
-      //   $('#songsTableBody').append(`
-      //           <tr data-id=${response[i].id}>
-      //               <td>${response[i].artist}</td>
-      //               <td>${response[i].track}</td>
-      //               <td>${response[i].rank}
-      //                   <button class="btn-vote">UP</button>
-      //                   <button class="btn-vote">DOWN</button>
-      //               </td>
-      //               <td>${response[i].published}</td>
-      //               <td>
-      //                   <button class="btn-delete" data-id=${response[i].id}>Delete</button>
-      //               </td>
-      //           </tr>
-      //       `);
-      // }
+      // append data to the DOM
+      for (let i = 0; i < response.length; i++) {
+        $('#viewKoalas').append(`
+                <tr data-id=${response[i].id}>
+                    <td>${response[i].name}</td>
+                    <td>${response[i].age}</td>
+                    <td>${response[i].gender}</td>
+                    <td>${response[i].transfer}</td>
+                    <td>${response[i].notes}</td>
+                    <td><button class="btn-transfer">Ready for Transfer</button></td>
+                </tr>
+            `);
+      }
     });
 } // end getKoalas
 
