@@ -19,7 +19,7 @@ function setupClickListeners() {
       name: $('#nameIn').val(),
       age: $('#ageIn').val(),
       gender: $('#genderIn').val(),
-      readyForTransfer: $('#readyForTransferIn').val(),
+      readyForTransfer: $('#readyForTransferIn').val().toUpperCase(),
       notes: $('#notesIn').val(),
     };
     // call saveKoala with the new obejct
@@ -57,5 +57,17 @@ function getKoalas() {
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
   // ajax call to server to get koalas
+  $.ajax({
+      type: 'POST',
+      url: '/koalas',
+      data: newKoala
+  }).then( function (response) {
+      $('#nameIn').val(''),
+      $('#ageIn').val(''),
+      $('#genderIn').val(''),
+      $('#readyForTransferIn').val('')
+      $('#notesIn').val('')
+      getKoalas();
+  });
 
 }
