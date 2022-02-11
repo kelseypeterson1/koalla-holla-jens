@@ -20,23 +20,20 @@ koalaRouter.get('/', (req, res) => {
 
 // POST
 koalaRouter.post('/', (req, res) => {
-    // songs.push(req.body);
-    res.sendStatus(200);
     console.log('server sees new koala')
-    // const newSong = req.body;
-    // const queryText = `
-    //   INSERT INTO "songs" ("artist", "track", "published", "rank")
-    //   VALUES ($1, $2, $3, $4);
-    // `;
-    // // parameterized query, prevents SQL injection
-    // pool.query(queryText, [newSong.artist, newSong.track, newSong.published, newSong.rank])
-    //   .then((result) => {
-    //       res.sendStatus(201);
-    //   })
-    //   .catch((err) => {
-    //       console.log('Error querying', queryText, err);
-    //       res.sendStatus(500);
-    //   })
+    const newKoala = req.body;
+    const queryText = `
+      INSERT INTO "koalas" ("name", "age", "gender", "transfer", "notes")
+      VALUES ($1, $2, $3, $4, $5);
+    `;
+    pool.query(queryText, [newKoala.name, newKoala.age, newKoala.gender, newKoala.transfer, newKoala.notes])
+      .then((result) => {
+          res.sendStatus(201);
+      })
+      .catch((err) => {
+          console.log('Error querying', queryText, err);
+          res.sendStatus(500);
+      })
 });
 
 // PUT

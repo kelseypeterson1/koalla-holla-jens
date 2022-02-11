@@ -19,7 +19,7 @@ function setupClickListeners() {
       name: $('#nameIn').val(),
       age: $('#ageIn').val(),
       gender: $('#genderIn').val(),
-      readyForTransfer: $('#readyForTransferIn').val(),
+      readyForTransfer: $('#readyForTransferIn').val().toUpperCase(),
       notes: $('#notesIn').val(),
     };
     // call saveKoala with the new obejct
